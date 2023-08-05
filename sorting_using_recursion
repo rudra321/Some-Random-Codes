@@ -14,7 +14,6 @@ void ins(stack<int>& s, int t){
     s.pop();
     ins(s, t);
     s.push(val);
-    return;
 }
 
 // sorting function
@@ -26,7 +25,6 @@ void srt(stack<int>& s){
     s.pop();
     srt(s);
     ins(s, t);
-    return;
 }
 
 int main() {
