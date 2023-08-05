@@ -1,0 +1,47 @@
+#include <iostream>
+#include <stack>
+#include <vector>
+
+using namespace std;
+
+// insert function
+void ins(stack<int>& s, int t){
+    if(s.size()==0||s.top()<=t){
+        s.push(t);
+        return;
+    }
+    int val=s.top();
+    s.pop();
+    ins(s, t);
+    s.push(val);
+    return;
+}
+
+// sorting function
+void srt(stack<int>& s){
+    if(s.size()==1){
+        return;
+    }
+    int t=s.top();
+    s.pop();
+    srt(s);
+    ins(s, t);
+    return;
+}
+
+int main() {
+    int k;
+    stack<int> s;
+    s.push(2);
+    s.push(3);
+    s.push(5);
+    s.push(10);
+    s.push(4);
+    s.push(0);
+    srt(s);
+    while (!s.empty()) {
+        cout << s.top() <<" ";
+        s.pop();
+    }
+    return 0;
+}
