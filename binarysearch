@@ -1,0 +1,23 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+pair<int, int> binarySearch(vector<int>& arr, int t){
+    int l=0;
+    int r=arr.size();
+    int m;
+    pair<int, int> p = {-1, -1};
+    while(l <= r){
+        m = l + (r - l)/2;
+        if(arr[m]>t) r = m - 1;
+        else l = m + 1;
+    }
+    p.second = l;
+    p.first = r;
+    return p;
+}
+int main() {
+    vector<int> v = {1, 2, 3, 6, 8, 9, 10, 14, 18};
+    pair<int,int> x = binarySearch(v, 7);
+    cout<< x.first<<" "<< x.second<<endl;
+    return 0;
+}
