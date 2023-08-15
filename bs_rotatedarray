@@ -1,0 +1,29 @@
+class Solution {
+public:
+    bool search(vector<int>& a, int x) {
+        int l = 0, r = a.size() - 1, m;
+        while (l <= r) {
+            m = l + (r - l) / 2;
+            if (a[m] == x) return true;
+
+            // Handle duplicates when a[l] == a[m]
+            if (a[l] == a[m] && a[m] == a[r]) {
+                l++;
+                r--;
+            } else if (a[l] <= a[m]) {
+                if (a[l] <= x && x < a[m]) {
+                    r = m - 1;
+                } else {
+                    l = m + 1;
+                }
+            } else {
+                if (a[m] < x && x <= a[r]) {
+                    l = m + 1;
+                } else {
+                    r = m - 1;
+                }
+            }
+        }
+        return false;
+    }
+};
